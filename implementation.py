@@ -14,7 +14,7 @@ test_x = test_x.reshape(350, 28, 28, 1) # Reshaping it
 test_x = test_x/255 # Changing the range of values according to train dataset
 
 try: # If the trained model already exists, then load it
-    model = load_model(os.path.join('./checkpoints/', 'model.h5'))
+    model = load_model(os.path.join('./saved_models/', 'model.h5'))
     print('Model loaded successfully')
 except OSError: # If not found then train it
     print('Weights not found!\nTraining the model...')
@@ -46,7 +46,7 @@ except OSError: # If not found then train it
               epochs = 1000,
               batch_size = 1024)
     print('Model trained successfully!')
-    model.save(os.path.join('./checkpoints/', 'model.h5')) # Savw the model
+    model.save(os.path.join('./saved_models/', 'model.h5')) # Savw the model
     print('Model saved!')
 
 model.evaluate(test_x, test_y) # Evaluate the accuracy of the model
